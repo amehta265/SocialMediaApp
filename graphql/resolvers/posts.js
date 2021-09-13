@@ -1,4 +1,5 @@
 const { AuthenticationError, UserInputError } = require('apollo-server');
+// This deals with all the post APIs in the backend
 
 const Post = require('../../models/Post');
 const checkAuth = require('../../util/check-auth');

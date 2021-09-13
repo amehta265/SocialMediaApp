@@ -1,4 +1,5 @@
 const { AuthenticationError, UserInputError } = require('apollo-server');
+// This file allows all for all the API calls in the backend related to comments.
 
 const checkAuth = require('../../util/check-auth');
 const Post = require('../../models/Post');

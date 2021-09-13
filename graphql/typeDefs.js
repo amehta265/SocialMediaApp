@@ -1,4 +1,5 @@
 const { gql } = require('apollo-server');
+// This file enforces types for all the objects that we use on graphql
 
 module.exports = gql`
   type Post {

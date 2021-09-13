@@ -1,6 +1,7 @@
 const postsResolvers = require('./posts');
 const usersResolvers = require('./users');
 const commentsResolvers = require('./comments');
+// This file brings together all the resolvers and connects them together.
 
 module.exports = {
   Post: {

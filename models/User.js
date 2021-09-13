@@ -1,5 +1,7 @@
 const { model, Schema } = require('mongoose');
 
+// This schema is a model for all the users on our app.
+
 const userSchema = new Schema({
   username: String,
   password: String,

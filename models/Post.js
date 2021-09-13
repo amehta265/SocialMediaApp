@@ -1,4 +1,5 @@
 const { model, Schema } = require('mongoose');
+// This schema helps define the table and all the data related to a post on the social media app.
 
 const postSchema = new Schema({
   body: String,

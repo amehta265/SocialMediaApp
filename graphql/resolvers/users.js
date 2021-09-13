@@ -1,6 +1,8 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs'); // We has the passwords before we store them to ensure database security.
+const jwt = require('jsonwebtoken'); // We use web tokens to allow for user identification. It is like using cookies.
 const { UserInputError } = require('apollo-server');
+
+// deals with all user api's and queries in the backend.
 
 const {
   validateRegisterInput,
@@ -17,7 +19,8 @@ function generateToken(user) {
       username: user.username
     },
     SECRET_KEY,
-    { expiresIn: '1h' }
+    { expiresIn: '1h' } // The token allows the user to come back within an hour and doesn't expire till then. 
+    // Once it expires the user will have to login once again.
   );
 }
 
@@ -25,7 +28,7 @@ module.exports = {
   Mutation: {
     async login(_, { username, password }) {
       const { errors, valid } = validateLoginInput(username, password);
-
+      // 
       if (!valid) {
         throw new UserInputError('Errors', { errors });
       }
@@ -88,7 +91,7 @@ module.exports = {
 
       const res = await newUser.save();
 
-      const token = generateToken(res);
+      const token = generateToken(res); // These tokens help us identify users
 
       return {
         ...res._doc,
