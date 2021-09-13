@@ -4,6 +4,8 @@ const { AuthenticationError, UserInputError } = require('apollo-server');
 const Post = require('../../models/Post');
 const checkAuth = require('../../util/check-auth');
 
+// Might be worth cacheing the posts you get, and loading from that cache
+// when offline (a bit of an out there suggestion, feel free to ignore)
 module.exports = {
   Query: {
     async getPosts() {
@@ -50,6 +52,9 @@ module.exports = {
 
       return post;
     },
+    // Does delete post remove the data from the database as well? Might
+    // it be worth keeping the data and just removing the account ID 
+    // associated with it?
     async deletePost(_, { postId }, context) {
       const user = checkAuth(context);
 
@@ -65,6 +70,8 @@ module.exports = {
         throw new Error(err);
       }
     },
+    // Might want to consider adding a repost functionality, perhaps use 
+    // functinality similar to the likePost combined with createPost
     async likePost(_, { postId }, context) {
       const { username } = checkAuth(context);
 

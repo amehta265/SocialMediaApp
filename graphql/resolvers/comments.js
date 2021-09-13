@@ -1,3 +1,6 @@
+// Perhaps rework comments so that you can nest comments withing comments
+// maybe even going down several levels (like Reddit does); would be significantly
+// more complicated though and storage complexity would be significant
 const { AuthenticationError, UserInputError } = require('apollo-server');
 // This file allows all for all the API calls in the backend related to comments.
 
